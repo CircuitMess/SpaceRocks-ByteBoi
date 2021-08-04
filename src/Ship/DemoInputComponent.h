@@ -2,7 +2,7 @@
 #define SPACEROCKS_SHIP_PLAYERINPUT_H
 #include <Arduino.h>
 #include "InputComponent.h"
-#include <avr/pgmspace.h>
+
 
 namespace SpaceRocks
 {
