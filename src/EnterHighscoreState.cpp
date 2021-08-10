@@ -97,30 +97,30 @@ void SpaceRocks::EnterHighscoreState::stop()
 }
 void SpaceRocks::EnterHighscoreState::draw()
 {
-	display->drawIcon(spacerocks_backdrop, 0, 0, 128, 128);
-	display->setCursor(16, 8);
-	display->setTextFont(2);
+	display->clear(TFT_BLACK);
+	display->drawIcon(spacerocks_backdrop, 0, 0, 160, 120, 1, TFT_BLACK);
+	display->setFont(&fonts::Font2);
 	display->setTextColor(TFT_WHITE);
 	display->setTextSize(1);
-	display->printCenter("ENTER NAME");
-	display->setCursor(20, 80);
+	display->drawString("ENTER NAME", display->width()/2, 8);
+	display->setCursor(39, 80);
 	
 	if(hiscoreBlink && game->score > Highscore.get(0).score){
-		display->printCenter("NEW HIGH!");
+		display->drawString("NEW HIGH!", display->width() / 2, 80);
 	}
 	else{
 		display->printf("SCORE: %04d", game->score);
 	}
 
-	display->setCursor(40, 40);
+	display->setCursor(66, 40);
 	display->print(name[0]);
-	display->setCursor(55, 40);
+	display->setCursor(81, 40);
 	display->print(name[1]);
-	display->setCursor(70, 40);
+	display->setCursor(96, 40);
 	display->print(name[2]);
 	// display->drawRect(30, 38, 100, 20, TFT_WHITE);
 	if(cursorBlink){
-		display->drawFastHLine(38 + 15*charCursor, 56, 12, TFT_WHITE);
+		display->drawFastHLine(63 + 15*charCursor, 54, 12, TFT_WHITE);
 	}
 }
 

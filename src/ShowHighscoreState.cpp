@@ -32,20 +32,18 @@ void SpaceRocks::ShowHighscoreState::stop()
 }
 void SpaceRocks::ShowHighscoreState::draw()
 {
-	display->drawIcon(spacerocks_backdrop, 0, 0, 128, 128);
-	display->setCursor(32, -2);
+	display->clear(TFT_BLACK);
+	display->drawIcon(spacerocks_backdrop, 0, 0, 160, 120, 1, TFT_BLACK);
 	display->setTextSize(1);
-	display->setTextFont(2);
+	display->setFont(&fonts::Font2);
 	display->setTextColor(TFT_WHITE);
-	display->printCenter("HIGHSCORES");
+	display->drawString("HIGHSCORES", display->width() / 2,-2);
 	display->setCursor(3, 110);
 	for (int i = 1; i < 6;i++)
 	{
-		display->setCursor(6, i * 20);
+		display->setCursor(22, 2 + i * 16);
 		if(i <= Highscore.count())
 		{
-			Serial.printf("%d.   %.3s    %04d\n", i, Highscore.get(i - 1).name, Highscore.get(i - 1).score);
-			Serial.println();
 			display->printf("%d.   %.3s    %04d", i, Highscore.get(i - 1).name, Highscore.get(i - 1).score);
 		}
 		else
@@ -53,9 +51,7 @@ void SpaceRocks::ShowHighscoreState::draw()
 			display->printf("%d.    ---   ----", i);
 		}
 	}
-	Serial.println("---------------");
-	display->setCursor(2, 115);
-	display->print("Press UP to erase");
+	display->drawString("Press UP to erase", display->width() / 2, 105);
 }
 
 void SpaceRocks::ShowHighscoreState::update(uint _time, SpaceRocks& game)

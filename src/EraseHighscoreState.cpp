@@ -33,36 +33,35 @@ void SpaceRocks::EraseHighscoreState::stop()
 }
 void SpaceRocks::EraseHighscoreState::draw()
 {
-	display->drawIcon(spacerocks_backdrop, 0, 0, 128, 128);
-	display->setTextFont(2);
+	display->clear(TFT_BLACK);
+	display->drawIcon(spacerocks_backdrop, 0, 0, 160, 120, 1, TFT_BLACK);
+	display->clear(TFT_BLACK);
+	display->setFont(&fonts::Font2);
 	display->setTextColor(TFT_WHITE);
-	display->setCursor(4, 5);
-	display->printCenter("ARE YOU SURE?");
-	display->setCursor(4, 25);
-	display->printCenter("This cannot");
-	display->setCursor(4, 41);
-	display->printCenter("be reverted!");
+	display->setTextDatum(textdatum_t::bottom_center);
+	display->drawString("ARE YOU SURE?", display->width() / 2, 17);
+	display->drawString("This cannot be reverted!", display->width() / 2, 37);
+	//	baseSprite->drawString("", screen.getWidth() / 2, 53);
 
-	display->setCursor(10, 102);
-	display->print("B:");
-	display->setCursor(48, 102);
-	display->print("Cancel");
+	display->drawString("B: Cancel", display->width() / 2, 105);
 
-	display->setCursor(10, 81);
+	display->setCursor(35, 81);
 	display->print("A:");
 
 	if (blinkState){
-		display->drawRect((display->width() - 60)/2 + 5, 80, 30*2, 9*2, TFT_RED);
+		display->drawRect(55, 64, 30*2, 9*2, TFT_RED);
+		display->drawRect(55, 64, 30*2, 9*2, TFT_RED);
 		display->setTextColor(TFT_RED);
-		display->setCursor(46, 81);
+		display->setCursor(62, 81);
 		display->print("DELETE");
 	}
 	else {
-		display->fillRect((display->width() - 60)/2 + 5, 80, 30*2, 9*2, TFT_RED);
+		display->fillRect(55, 64, 30*2, 9*2, TFT_RED);
 		display->setTextColor(TFT_WHITE);
-		display->setCursor(46, 81);
+		display->setCursor(62, 81);
 		display->print("DELETE");
 	}
+	display->setTextDatum(textdatum_t::top_center);
 }
 
 void SpaceRocks::EraseHighscoreState::update(uint _time, SpaceRocks& game)

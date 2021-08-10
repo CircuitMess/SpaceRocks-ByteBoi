@@ -33,13 +33,13 @@ void SpaceRocks::PauseState::update(uint _time, SpaceRocks& game)
 }
 void SpaceRocks::PauseState::draw()
 {
-	display->drawIcon(spacerocks_backdrop, 0, 0, 128, 128);
+	display->clear(TFT_BLACK);
+	display->drawIcon(spacerocks_backdrop, 0, 0, 160, 120, 1, TFT_BLACK);
 	display->setCursor(32, display->height()/2 - 25);
 	display->setTextSize(2);
-	display->setTextFont(2);
+	display->setFont(&fonts::Font2);
 	display->setTextColor(TFT_WHITE);
 	display->printCenter("PAUSE");
 	display->setTextSize(1);
-	display->setCursor(110,110);
-	display->printCenter("A: resume   B: quit");
+	display->drawString("A: resume     B: quit", display->width()/2,100);
 }

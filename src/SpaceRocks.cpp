@@ -9,7 +9,7 @@
 #include "ShowHighscoreState.h"
 #include "EraseHighscoreState.h"
 
-SpaceRocks::SpaceRocks::SpaceRocks(Display& display) : Context(display), display(&display), canvas(display.getBaseSprite()), score(0)
+SpaceRocks::SpaceRocks::SpaceRocks(Display& display) : Context(display), canvas(screen.getSprite()), score(0)
 {
 	randomSeed(micros()*millis());
 	state = new TitleState(canvas);
@@ -23,7 +23,7 @@ void SpaceRocks::SpaceRocks::loop(uint _time)
 {
 	state->update(_time, *this);
 	draw();
-	display->commit();
+	screen.commit();
 }
 void SpaceRocks::SpaceRocks::start()
 {

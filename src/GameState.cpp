@@ -130,7 +130,8 @@ void SpaceRocks::GameState::update(uint _time, SpaceRocks& game)
 }
 void SpaceRocks::GameState::draw()
 {
-	display->drawIcon(spacerocks_backdrop, 0, 0, 128, 128);
+	display->clear(TFT_BLACK);
+	display->drawIcon(spacerocks_backdrop, 0,0,160,120, 1, TFT_BLACK);
 	if(dead)
 	{
 		uint8_t passes = (deadTime / 200000) * 2;
@@ -148,7 +149,7 @@ void SpaceRocks::GameState::draw()
 	}
 	asteroids.draw(display);
 	display->setTextWrap(0);
-	display->setTextFont(2);
+	display->setFont(&fonts::Font2);
 	display->setTextSize(1);
 	display->setTextColor(TFT_GREEN);
 	display->setCursor(4, 2);

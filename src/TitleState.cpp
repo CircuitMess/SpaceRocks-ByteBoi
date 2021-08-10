@@ -81,40 +81,41 @@ void SpaceRocks::TitleState::update(uint _time, SpaceRocks& game)
 }
 void SpaceRocks::TitleState::draw()
 {
-	display->drawIcon(spacerocks_backdrop, 0,0,128,128);
+	display->clear(TFT_BLACK);
+	display->drawIcon(spacerocks_backdrop, 0,0,160,120, 1, TFT_BLACK);
 	ship->draw();
-	display->drawIcon(spacerocks_title, 5,5,118,60, 1, TFT_WHITE);
+	display->drawIcon(spacerocks_title, 5,5,150,75, 1, TFT_WHITE);
 
-	display->setCursor(118, 110);
-	display->setTextFont(2);
+	display->setFont(&fonts::Font2);
 	display->setTextSize(1);
-	display->setTextColor(TFT_WHITE);
-	display->drawRect(18, 110, 92, 18, TFT_WHITE);
-	display->drawRect(17, 109, 94, 20, TFT_WHITE);
+	display->setTextDatum(textdatum_t::top_center);
 
-	display->setCursor(18*2, 110);
-	display->printCenter(titleMenu[titleCursor]);
+	display->setTextColor(TFT_WHITE);
+	display->drawRect(34, 100, 92, 18, TFT_WHITE);
+	display->drawRect(33, 99, 94, 20, TFT_WHITE);
+
+	display->drawString(titleMenu[titleCursor], display->width()/2, 100);
 	if(blinkState)
 	{
 		if (titleCursor == 0)
 		{
-			display->drawIcon(spacerocks_arrowLeft, 4, 112, 4, 7, 2, TFT_BLACK);
-			display->drawIcon(spacerocks_arrowRight, 118, 112, 4, 7, 2, TFT_BLACK);
+			display->drawIcon(spacerocks_arrowLeft, 22, 102, 4, 7, 2, TFT_BLACK);
+			display->drawIcon(spacerocks_arrowRight, 132, 102, 4, 7, 2, TFT_BLACK);
 		}
 		else if (titleCursor == 2)
 		{
-			display->drawIcon(spacerocks_arrowLeft, 2, 112, 4, 7, 2, TFT_BLACK);
-			display->drawIcon(spacerocks_arrowRight, 116, 112, 4, 7, 2, TFT_BLACK);
+			display->drawIcon(spacerocks_arrowLeft, 20, 102, 4, 7, 2, TFT_BLACK);
+			display->drawIcon(spacerocks_arrowRight, 130, 102, 4, 7, 2, TFT_BLACK);
 		}
 		else
 		{
-			display->drawIcon(spacerocks_arrowLeft, 2, 112, 4, 7, 2, TFT_BLACK);
-			display->drawIcon(spacerocks_arrowRight, 118, 112, 4, 7, 2, TFT_BLACK);
+			display->drawIcon(spacerocks_arrowLeft, 20, 102, 4, 7, 2, TFT_BLACK);
+			display->drawIcon(spacerocks_arrowRight, 132, 102, 4, 7, 2, TFT_BLACK);
 		}
 	}
 	else
 	{
-		display->drawIcon(spacerocks_arrowLeft, 4, 112, 4, 7, 2, TFT_BLACK);
-		display->drawIcon(spacerocks_arrowRight, 116, 112, 4, 7, 2, TFT_BLACK);
+		display->drawIcon(spacerocks_arrowLeft, 22, 102, 4, 7, 2, TFT_BLACK);
+		display->drawIcon(spacerocks_arrowRight, 130, 102, 4, 7, 2, TFT_BLACK);
 	}
 }
