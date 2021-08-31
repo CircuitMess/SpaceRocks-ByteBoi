@@ -12,12 +12,13 @@ struct GameInfo {
 
 #include <Arduino.h>
 #include <Display/Display.h>
+#include <SPIFFS.h>
 #include "src/bitmaps/spacerocks_icon.hpp"
 #include "src/SpaceRocks.h"
 
 const GameInfo SpaceRocksInfo {
 		"SpaceRocks",
 		"Shoot the asteroids to survive!",
-		spacerocks_icon,
+		[]() -> fs::File { return SPIFFS.open("/rocks.raw"); },
 		[](Display& display) -> Context* { return new SpaceRocks::SpaceRocks(display); }
 };
