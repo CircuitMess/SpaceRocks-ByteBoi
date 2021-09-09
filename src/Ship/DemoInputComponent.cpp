@@ -1,6 +1,5 @@
 #include "DemoInputComponent.h"
 #include "Input/Input.h"
-#include "../../Nibble.hpp"
 #include "Ship.h"
 SpaceRocks::DemoInputComponent::DemoInputComponent() : rotateTimer(0) {}
 void SpaceRocks::DemoInputComponent::start(Ship& ship)
