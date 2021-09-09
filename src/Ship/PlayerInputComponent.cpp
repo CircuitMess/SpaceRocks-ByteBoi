@@ -1,7 +1,7 @@
 #include "PlayerInputComponent.h"
 #include "Input/Input.h"
-#include "../../Nibble.hpp"
 #include "Ship.h"
+#include <ByteBoi.h>
 #include <Audio/Piezo.h>
 constexpr float SpaceRocks::PlayerInputComponent::headingTable[24][2];
 SpaceRocks::PlayerInputComponent* SpaceRocks::PlayerInputComponent::instance = nullptr;

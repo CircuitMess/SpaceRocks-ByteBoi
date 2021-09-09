@@ -9,10 +9,13 @@
 #include "ShowHighscoreState.h"
 #include "EraseHighscoreState.h"
 
-SpaceRocks::SpaceRocks::SpaceRocks(Display& display) : Context(display), canvas(screen.getSprite()), score(0)
+SpaceRocks::SpaceRocks *SpaceRocks::SpaceRocks::instance = nullptr;
+
+SpaceRocks::SpaceRocks::SpaceRocks(Display *display) : Context(*display), canvas(screen.getSprite()), score(0)
 {
 	randomSeed(micros()*millis());
 	state = new TitleState(canvas);
+	instance = this;
 }
 
 void SpaceRocks::SpaceRocks::draw()
@@ -27,7 +30,7 @@ void SpaceRocks::SpaceRocks::loop(uint _time)
 }
 void SpaceRocks::SpaceRocks::start()
 {
-	runningContext = this;
+	//Context* runningContext = this;
 	Highscore.begin();
 	state->start(*this);
 	LoopManager::addListener(this);
@@ -47,7 +50,7 @@ void SpaceRocks::SpaceRocks::pack()
 		delete pausedGameState;
 	}
 
-	exitingGame = true;
+	//exitingGame = true;
 }
 void SpaceRocks::SpaceRocks::newGame()
 {

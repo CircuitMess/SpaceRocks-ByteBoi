@@ -1,7 +1,7 @@
 #ifndef SPACEROCKS_STATE_H
 #define SPACEROCKS_STATE_H
 #include <Display/Sprite.h>
-#include "../Nibble.hpp"
+
 
 namespace SpaceRocks
 {
