@@ -19,6 +19,6 @@ struct GameInfo {
 const GameInfo SpaceRocksInfo {
 		"SpaceRocks",
 		"Shoot the asteroids to survive!",
-		[]() -> fs::File { return SPIFFS.open("/MainMenu/rocks.raw"); },
-		[](Display& display) -> Context* { return new SpaceRocks::SpaceRocks(display); }
+		[](){ globalFile = SPIFFS.open("/MainMenu/rocks.raw");},
+		[](Display& display) -> Context* { return new SpaceRocks::SpaceRocks(&display); }
 };
