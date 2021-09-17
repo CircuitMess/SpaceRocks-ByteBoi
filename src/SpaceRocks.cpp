@@ -30,7 +30,6 @@ void SpaceRocks::SpaceRocks::loop(uint _time)
 }
 void SpaceRocks::SpaceRocks::start()
 {
-	//Context* runningContext = this;
 	Highscore.begin();
 	state->start(*this);
 	LoopManager::addListener(this);
@@ -50,7 +49,6 @@ void SpaceRocks::SpaceRocks::pack()
 		delete pausedGameState;
 	}
 
-	//exitingGame = true;
 }
 void SpaceRocks::SpaceRocks::newGame()
 {
