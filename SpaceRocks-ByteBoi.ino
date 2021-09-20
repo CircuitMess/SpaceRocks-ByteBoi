@@ -14,6 +14,7 @@ SpaceRocks::SpaceRocks* game;
 void setup() {
 	Serial.begin(115200);
 	ByteBoi.begin();
+	Piezo.begin(25);
 	ByteBoi.getDisplay()->commit();
 	//gpio_init();
 	//i2c.begin(0x74, 23, 22);
