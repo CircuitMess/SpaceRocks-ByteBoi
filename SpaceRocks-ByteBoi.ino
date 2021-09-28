@@ -16,11 +16,6 @@ void setup() {
 	ByteBoi.begin();
 	Piezo.begin(25);
 	ByteBoi.getDisplay()->commit();
-	//gpio_init();
-	//i2c.begin(0x74, 23, 22);
-	//display.begin();
-	LoopManager::addListener(Input::getInstance());
-
 	game=new SpaceRocks::SpaceRocks(ByteBoi.getDisplay());
 	LoopManager::addListener(game);
 	game->unpack();
