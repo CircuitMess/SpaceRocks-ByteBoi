@@ -14,16 +14,13 @@ SpaceRocks::SpaceRocks* game;
 void setup() {
 	Serial.begin(115200);
 	ByteBoi.begin();
-	Piezo.begin(25);
-	ByteBoi.getDisplay()->commit();
 	game=new SpaceRocks::SpaceRocks(ByteBoi.getDisplay());
-	LoopManager::addListener(game);
 	game->unpack();
+	ByteBoi.splash();
 	game->start();
 
 }
 
 void loop() {
 	LoopManager::loop();
-	yield();
 }
