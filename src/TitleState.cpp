@@ -7,6 +7,7 @@
 #include <Input/Input.h>
 #include "SpaceRocks.h"
 #include <Audio/Piezo.h>
+#include <ByteBoi.h>
 
 const char *SpaceRocks::TitleState::titleMenu[3] = {"Start", "Hiscores", "Quit"};
 SpaceRocks::TitleState* SpaceRocks::TitleState::instance = nullptr;
@@ -62,7 +63,7 @@ void SpaceRocks::TitleState::start(SpaceRocks& _game)
 				instance->game->openHighscores();
 				break;
 			case 2:
-				instance->game->pop();
+				ByteBoi.backToLauncher();
 				break;
 		}
 	});
