@@ -14,6 +14,8 @@ SpaceRocks::SpaceRocks* game;
 void setup() {
 	Serial.begin(115200);
 	ByteBoi.begin();
+	ByteBoi.bindMenu();
+	ByteBoi.setGameID("SpaceRocks");
 	game=new SpaceRocks::SpaceRocks(ByteBoi.getDisplay());
 	game->unpack();
 	ByteBoi.splash();
