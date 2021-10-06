@@ -16,7 +16,7 @@ void setup() {
 	ByteBoi.begin();
 	ByteBoi.bindMenu();
 	BatteryPopup.enablePopups(true);
-	ByteBoi.setGameID("SpaceRocks");
+	ByteBoi.setGameID("SRock");
 	game=new SpaceRocks::SpaceRocks(ByteBoi.getDisplay());
 	game->unpack();
 	ByteBoi.splash();
