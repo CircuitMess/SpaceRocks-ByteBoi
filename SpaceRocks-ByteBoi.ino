@@ -15,6 +15,7 @@ void setup() {
 	Serial.begin(115200);
 	ByteBoi.begin();
 	ByteBoi.bindMenu();
+	BatteryPopup.enablePopups(true);
 	ByteBoi.setGameID("SpaceRocks");
 	game=new SpaceRocks::SpaceRocks(ByteBoi.getDisplay());
 	game->unpack();
