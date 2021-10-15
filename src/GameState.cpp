@@ -77,15 +77,19 @@ void SpaceRocks::GameState::update(uint _time, SpaceRocks& game)
 				switch (asteroids.asteroids[i].type)
 				{
 				case AsteroidType::asteroid:
+					rgbLED.setRGB(static_cast<LEDColor>(LEDColor::BLUE));
 					score+=2;
 					break;
 				case AsteroidType::rock:
+					rgbLED.setRGB(static_cast<LEDColor>(LEDColor::BLUE));
 					score+=4;
 					break;
 				case AsteroidType::pebble:
+					rgbLED.setRGB(static_cast<LEDColor>(LEDColor::BLUE));
 					score+=8;
 					break;
 				}
+				rgbLED.setRGB(OFF);
 				asteroids.broken(i);
 				ship->bullets.bullets[j].hit();
 			}

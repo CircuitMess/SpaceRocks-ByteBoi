@@ -1,6 +1,7 @@
 #ifndef SPACEROCKS_GAMESTATE_H
 #define SPACEROCKS_GAMESTATE_H
 
+#include <ByteBoiLED.h>
 #include "State.hpp"
 #include "Ship/Ship.h"
 #include "Asteroid/AsteroidPool.h"
@@ -37,7 +38,7 @@ private:
 	bool dead;
 	uint deadTime;
 	uint levelChangeTime;
-
+	ByteBoiLED rgbLED;
 
 };
 
