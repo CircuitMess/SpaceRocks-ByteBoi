@@ -38,7 +38,6 @@ private:
 	bool dead;
 	uint deadTime;
 	uint levelChangeTime;
-	ByteBoiLED rgbLED;
 
 };
 
