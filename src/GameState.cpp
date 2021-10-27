@@ -135,7 +135,8 @@ void SpaceRocks::GameState::update(uint _time, SpaceRocks& game)
 void SpaceRocks::GameState::draw()
 {
 	display->clear(TFT_BLACK);
-	display->drawIcon(spacerocks_backdrop, 0,0,160,120, 1, TFT_BLACK);
+	drawBackground();
+//	display->drawIcon(spacerocks_backdrop, 0,0,160,120, 1, TFT_BLACK);
 	if(dead)
 	{
 		uint8_t passes = (deadTime / 200000) * 2;

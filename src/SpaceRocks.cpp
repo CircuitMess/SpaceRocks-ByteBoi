@@ -26,6 +26,10 @@ void SpaceRocks::SpaceRocks::loop(uint _time)
 {
 	state->update(_time, *this);
 	draw();
+	canvas->setTextColor(TFT_WHITE);
+	canvas->setTextSize(1);
+	canvas->setCursor(2, 5);
+	canvas->printf("%.1f fps", (1000000.0 / (float) _time));
 	screen.commit();
 }
 void SpaceRocks::SpaceRocks::start()

@@ -17,6 +17,9 @@ public:
 	virtual void draw() = 0;
 	virtual void stop(){}
 
+	void drawBackground();
+	void drawStar(int16_t x, int16_t y, uint8_t size, Color color);
+
 protected:
 	Sprite* display;
 	SpaceRocks* game;
