@@ -82,7 +82,8 @@ void SpaceRocks::TitleState::update(uint _time, SpaceRocks& game)
 void SpaceRocks::TitleState::draw()
 {
 	display->clear(TFT_BLACK);
-	display->drawIcon(spacerocks_backdrop, 0,0,160,120, 1, TFT_BLACK);
+	drawBackground();
+//	display->drawIcon(spacerocks_backdrop, 0,0,160,120, 1, TFT_BLACK);
 	ship->draw();
 	display->drawIcon(spacerocks_title, 5,5,150,75, 1, TFT_WHITE);
 
