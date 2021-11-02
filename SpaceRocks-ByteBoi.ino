@@ -6,8 +6,8 @@
 #include <Loop/LoopManager.h>
 #include <SPIFFS.h>
 #include <ByteBoi.h>
-//#include "Nibble.hpp"
-#include <Audio/Piezo.h>
+#include <SD.h>
+#include "src/Highscore/Highscore.h"
 
 SpaceRocks::SpaceRocks* game;
 
@@ -17,6 +17,8 @@ void setup() {
 	ByteBoi.bindMenu();
 	BatteryPopup.enablePopups(true);
 	ByteBoi.setGameID("SRock");
+	SD.begin(SD_CS, SPI);
+	SpaceRocks::Highscore.begin();
 	game=new SpaceRocks::SpaceRocks(ByteBoi.getDisplay());
 	game->unpack();
 	ByteBoi.splash();

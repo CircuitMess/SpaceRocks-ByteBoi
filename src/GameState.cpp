@@ -4,6 +4,8 @@
 #include <Input/Input.h>
 #include "SpaceRocks.h"
 #include <ByteBoi.h>
+#include <SD.h>
+
 const char *SpaceRocks::GameState::titleMenu[3] = {"Start", "Hiscores", "Quit"};
 SpaceRocks::GameState* SpaceRocks::GameState::instance = nullptr;
 SpaceRocks::GameState::GameState(Sprite* sprite) : State(sprite)
@@ -22,11 +24,15 @@ SpaceRocks::GameState::GameState(Sprite* sprite) : State(sprite)
 	dead = 0;
 	deadTime = 0;
 	levelChangeTime = 2000000;
+
+	music = new Sample(SD.open(ByteBoi.getSDPath() + "/Music/Game.aac"));
+	music->setLooping(true);
 }
 
 SpaceRocks::GameState::~GameState()
 {
-	stop();
+	GameState::stop();
+	delete music;
 	delete ship;
 	delete UIship;
 }
@@ -38,11 +44,13 @@ void SpaceRocks::GameState::start(SpaceRocks& _game)
 		instance->game->pauseGame();
 	});
 	ship->start();
+	Playback.play(music);
 }
 void SpaceRocks::GameState::stop()
 {
 	Input::getInstance()->removeBtnPressCallback(BTN_B);
 	ship->stop();
+	Playback.stop();
 }
 void SpaceRocks::GameState::update(uint _time, SpaceRocks& game)
 {

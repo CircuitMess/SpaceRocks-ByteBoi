@@ -3,6 +3,7 @@
 
 #include "State.hpp"
 #include "Ship/Ship.h"
+#include <ByteBoi.h>
 
 namespace SpaceRocks
 {
@@ -24,6 +25,8 @@ private:
 	bool blinkState;
 	uint blinkMicros;
 	static TitleState* instance;
+
+	Sample* music = nullptr;
 };
 
 };

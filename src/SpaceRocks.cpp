@@ -34,7 +34,6 @@ void SpaceRocks::SpaceRocks::loop(uint _time)
 }
 void SpaceRocks::SpaceRocks::start()
 {
-	Highscore.begin();
 	state->start(*this);
 	LoopManager::addListener(this);
 }

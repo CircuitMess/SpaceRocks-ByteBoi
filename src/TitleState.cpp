@@ -7,6 +7,7 @@
 #include <Input/Input.h>
 #include "SpaceRocks.h"
 #include <ByteBoi.h>
+#include <SD.h>
 
 const char *SpaceRocks::TitleState::titleMenu[3] = {"Start", "Hiscores", "Quit"};
 SpaceRocks::TitleState* SpaceRocks::TitleState::instance = nullptr;
@@ -20,11 +21,15 @@ SpaceRocks::TitleState::TitleState(Sprite* sprite) : State(sprite)
 	titleCursor = 0;
 	blinkState = 0;
 	blinkMicros = 0;
+
+	music = new Sample(SD.open(ByteBoi.getSDPath() + "/Music/Menu.aac"));
+	music->setLooping(true);
 }
 
 SpaceRocks::TitleState::~TitleState()
 {
-	stop();
+	TitleState::stop();
+	delete music;
 	delete ship;
 }
 void SpaceRocks::TitleState::stop()
@@ -33,6 +38,7 @@ void SpaceRocks::TitleState::stop()
 	Input::getInstance()->removeBtnPressCallback(BTN_RIGHT);
 	Input::getInstance()->removeBtnPressCallback(BTN_A);
 	ship->stop();
+	Playback.stop();
 }
 void SpaceRocks::TitleState::start(SpaceRocks& _game)
 {
@@ -67,6 +73,7 @@ void SpaceRocks::TitleState::start(SpaceRocks& _game)
 		}
 	});
 	ship->start();
+	Playback.play(music);
 }
 void SpaceRocks::TitleState::update(uint _time, SpaceRocks& game)
 {

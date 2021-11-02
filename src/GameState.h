@@ -5,6 +5,7 @@
 #include "State.hpp"
 #include "Ship/Ship.h"
 #include "Asteroid/AsteroidPool.h"
+#include <ByteBoi.h>
 
 namespace SpaceRocks
 {
@@ -39,6 +40,7 @@ private:
 	uint deadTime;
 	uint levelChangeTime;
 
+	Sample* music = nullptr;
 };
 
 };
