@@ -33,6 +33,7 @@ public:
 	void gameOver();
 	void resumeGame();
 	void returnToTitle();
+	virtual ~SpaceRocks();
 	uint score;
 	State *pausedGameState = nullptr;
 private:
