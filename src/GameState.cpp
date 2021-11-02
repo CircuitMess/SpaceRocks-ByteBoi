@@ -13,7 +13,7 @@ SpaceRocks::GameState::GameState(Sprite* sprite) : State(sprite)
 	UIship = new Ship(this, nullptr, display);
 	ship->shipX = display->width()/2;
 	ship->shipY = display->height()/2;
-	UIship->shipX = 99;
+	UIship->shipX = 130;
 	UIship->shipY = 10;
 	life = 3;
 	score = 0;
@@ -158,7 +158,7 @@ void SpaceRocks::GameState::draw()
 	display->setTextSize(1);
 	display->setTextColor(TFT_GREEN);
 	display->setCursor(4, 2);
-	display->printf("LV:%d    %04d    X%d", level, score, life);
+	display->printf("LV:%d       %04d      X%d", level, score, life);
 	UIship->draw();
 }
 bool SpaceRocks::GameState::rectRect(float x1, float y1, float w1, float h1, float x2, float y2, float w2, float h2) {
