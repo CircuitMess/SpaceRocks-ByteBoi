@@ -18,6 +18,11 @@ SpaceRocks::SpaceRocks::SpaceRocks(Display *display) : Context(*display), canvas
 	instance = this;
 }
 
+SpaceRocks::SpaceRocks::~SpaceRocks(){
+	delete state;
+	delete pausedGameState;
+}
+
 void SpaceRocks::SpaceRocks::draw()
 {
 	state->draw();
@@ -45,11 +50,9 @@ void SpaceRocks::SpaceRocks::stop()
 void SpaceRocks::SpaceRocks::pack()
 {
 	state->stop();
-	delete state;
 
 	if(pausedGameState != nullptr){
 		pausedGameState->stop();
-		delete pausedGameState;
 	}
 
 }
