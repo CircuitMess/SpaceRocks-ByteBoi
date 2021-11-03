@@ -2,6 +2,7 @@
 #define SPACEROCKS_GAMEOVERSTATE_H
 
 #include "State.hpp"
+#include <ByteBoi.h>
 
 namespace SpaceRocks
 {
@@ -14,10 +15,13 @@ public:
 	void draw() override;
 	void start(SpaceRocks& _game) override;
 	void stop() override;
+	virtual ~GameOverState();
 private:
 	uint linesDrawn;
 	static GameOverState *instance;
 	bool animationOver = 0;
+	Sample* music = nullptr;
+
 };
 
 };

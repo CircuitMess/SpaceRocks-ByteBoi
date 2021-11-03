@@ -3,6 +3,7 @@
 #include <Input/Input.h>
 #include "SpaceRocks.h"
 #include "bitmaps/spacerocks_backdrop.hpp"
+#include <SD.h>
 
 SpaceRocks::GameOverState *SpaceRocks::GameOverState::instance = nullptr;
 
@@ -11,7 +12,15 @@ SpaceRocks::GameOverState::GameOverState(Sprite* sprite) : State(sprite)
 	instance = this;
 	linesDrawn = 0;
 	animationOver = 0;
+
+	music = new Sample(SD.open(ByteBoi.getSDPath() + "/Music/GameOver.aac"));
+	music->setLooping(true);
 }
+
+SpaceRocks::GameOverState::~GameOverState(){
+	delete music;
+}
+
 void SpaceRocks::GameOverState::start(SpaceRocks& _game)
 {
 	game = &_game;
@@ -25,16 +34,20 @@ void SpaceRocks::GameOverState::start(SpaceRocks& _game)
 			instance->game->enterHighscore();
 		}
 	});
+
+	Playback.play(music);
 }
 void SpaceRocks::GameOverState::stop()
 {
 	Input::getInstance()->removeBtnPressCallback(BTN_A);
 	Input::getInstance()->removeBtnPressCallback(BTN_B);
+
+	Playback.stop();
 }
 void SpaceRocks::GameOverState::draw()
 {
 	display->clear(TFT_BLACK);
-	display->drawIcon(spacerocks_backdrop, 0, 0, 160, 120, 1, TFT_BLACK);
+	drawBackground();
 	for (int i = 0; i <= linesDrawn*4; i+=4)
 	{
 		display->drawFastHLine(0, i, display->width(), TFT_DARKGREY);
