@@ -14,7 +14,7 @@ SpaceRocks::GameOverState::GameOverState(Sprite* sprite) : State(sprite)
 	animationOver = 0;
 
 	music = new Sample(SD.open(ByteBoi.getSDPath() + "/Music/GameOver.aac"));
-	music->setLooping(true);
+	music->setLooping(false);
 }
 
 SpaceRocks::GameOverState::~GameOverState(){
