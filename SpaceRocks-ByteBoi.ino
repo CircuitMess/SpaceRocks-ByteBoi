@@ -8,12 +8,14 @@
 #include <ByteBoi.h>
 #include <SD.h>
 #include "src/Highscore/Highscore.h"
+#include <SleepService.h>
 
 SpaceRocks::SpaceRocks* game;
 
 void setup() {
 	Serial.begin(115200);
 	ByteBoi.begin();
+	Sleep.begin();
 	ByteBoi.bindMenu();
 	BatteryPopup.enablePopups(true);
 	ByteBoi.setGameID("SRock");
