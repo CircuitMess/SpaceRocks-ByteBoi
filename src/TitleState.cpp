@@ -68,6 +68,7 @@ void SpaceRocks::TitleState::start(SpaceRocks& _game)
 				instance->game->openHighscores();
 				break;
 			case 2:
+				Playback.stop();
 				ByteBoi.backToLauncher();
 				break;
 		}
