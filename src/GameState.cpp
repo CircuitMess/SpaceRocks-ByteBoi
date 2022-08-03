@@ -81,7 +81,6 @@ void SpaceRocks::GameState::update(uint _time, SpaceRocks& game)
 			if(rectRect(ship->bullets.bullets[j].x, ship->bullets.bullets[j].y, 2, 2,
 				asteroids.asteroids[i].x, asteroids.asteroids[i].y, asteroids.asteroids[i].getWidth(), asteroids.asteroids[i].getWidth()))
 			{
-				Playback.tone(50, 50);
 				switch (asteroids.asteroids[i].type)
 				{
 				case AsteroidType::asteroid:
@@ -108,7 +107,9 @@ void SpaceRocks::GameState::update(uint _time, SpaceRocks& game)
 		ship->shipY > asteroids.asteroids[i].y && ship->shipY < asteroids.asteroids[i].y + asteroids.asteroids[i].getWidth() &&
 		!ship->invincibility)
 		{
-			Playback.tone(50, 50);
+			Playback.tone(80, 800, Wave::SAW);
+			Playback.tone(100, 400, Wave::SAW);
+
 			asteroids.broken(i);
 			if(life > 0)
 			{

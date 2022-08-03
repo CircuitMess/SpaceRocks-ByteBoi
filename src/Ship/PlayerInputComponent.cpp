@@ -22,7 +22,6 @@ void SpaceRocks::PlayerInputComponent::start(Ship& _ship)
 		instance->ship->velocityY += headingTable[instance->ship->heading][1];
 	});
 	Input::getInstance()->setBtnPressCallback(BTN_A, [](){
-		Playback.tone(400, 50);
 		instance->ship->shoot();
 	});
 }
