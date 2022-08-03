@@ -19,7 +19,6 @@ void setup() {
 	ByteBoi.bindMenu();
 	BatteryPopup.enablePopups(true);
 	ByteBoi.setGameID("SRock");
-	SD.begin(SD_CS, SPI);
 	SpaceRocks::Highscore.begin();
 	game=new SpaceRocks::SpaceRocks(ByteBoi.getDisplay());
 	game->unpack();
